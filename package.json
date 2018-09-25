@@ -1,0 +1,25 @@
+{
+  "name": "start-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccDpE9/start-page.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ccDpE9/start-page/issues"
+  },
+  "homepage": "https://github.com/ccDpE9/start-page#readme",
+  "devDependencies": {
+    "node-sass": "^4.9.3"
+  },
+  "dependencies": {
+    "live-server": "^1.2.0"
+  }
+}
