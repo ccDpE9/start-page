@@ -1,0 +1,21 @@
+.weather {
+  // justify-self: start;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &__day {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &--icon {
+      float: left;
+    }
+
+    &--summary {
+    }
+
+  }
+
+};
