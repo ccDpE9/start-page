@@ -6,6 +6,32 @@
   box-sizing: inherit;
 }
 
+html {
+  // rem = font-size
+  // 1 rem = 10px
+  font-size: 62.5%;
+  line-height: 1.3;
+
+  @include respond(tab-land) {
+    // 1 rem = 9px, 9/16 = 55
+    font-size: 56.25%;
+    line-height: 1.4;
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+
+  @include respond(phone) {
+    font-size: 40%;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+
+}
+
 body {
   // font-family: "Lato", sans-serif;
   box-sizing: border-box;

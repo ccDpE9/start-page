@@ -2,46 +2,93 @@
 
 <html lang="en">
 
-<head>
+  <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="vendors/css/animated_weather_icons.css">
 
-  <title>Hello World</title>
+    <title>Hello World</title>
 
-</head>
+  </head>
 
-<body>
-  
-  <main class="container">
+  <body>
 
-    <section class="time">
-      <h1 class="time__current"></h1>
-    </section>
+    <div class="container">
 
-    <section class="weather">
-    </section>
+      <section class="time">
+	<h1 class="time__current"></h1>
+      </section>
 
-    <section class="search-bar">
-      <p>-></p>
-      <form action="" class="search-bar__form">
-	<input type="search" class="search-bar__form--input" placeholder="Search...">	
-      </form> 
-    </section>
+      <section class="weather">
+      </section>
 
-    <section class="todo">
-    </section>
+      <section class="search-bar">
+	<p>-></p>
+	<form action="" class="search-bar__form">
+	  <input type="search" class="search-bar__form--input" placeholder="Search...">	
+	</form> 
+      </section>
 
-    <!-- Uses ProtonMail API to return the number of unread messages -->
-    <section class="email">
-    </section>
+      <section class="todo">
+      </section>
 
-  </main>
+      <!-- Uses ProtonMail API to return the number of unread messages -->
+      <section class="email">
+      </section>
 
-  <script src="js/script.js"></script>
+      <a href="#" class="test">Test</a>
 
-</body>
+
+      <div class="icon sun-shower">
+	<div class="cloud"></div>
+	<div class="sun">
+	  <div class="rays"></div>
+	</div>
+	<div class="rain"></div>
+      </div>
+
+      <div class="icon thunder-storm">
+	<div class="cloud"></div>
+	<div class="lightning">
+	  <div class="bolt"></div>
+	  <div class="bolt"></div>
+	</div>
+      </div>
+
+      <div class="icon cloudy">
+	<div class="cloud"></div>
+	<div class="cloud"></div>
+      </div>
+
+      <div class="icon flurries">
+	<div class="cloud"></div>
+	<div class="snow">
+	  <div class="flake"></div>
+	  <div class="flake"></div>
+	</div>
+      </div>
+
+      <div class="icon sunny">
+	<div class="sun">
+	  <div class="rays"></div>
+	</div>
+      </div>
+
+      <div class="icon rainy">
+	<div class="cloud"></div>
+	<div class="rain"></div>
+      </div>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="js/script.js"></script>
+
+  </body>
 
 </html>

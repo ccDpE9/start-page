@@ -5,10 +5,38 @@
   padding: 0;
   box-sizing: inherit; }
 
+html {
+  font-size: 62.5%;
+  line-height: 1.3; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%;
+      line-height: 1.4; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 40%; } }
+
 body {
   box-sizing: border-box; }
 
+img {
+  width: 100px;
+  height: auto;
+  fill: #aff2445; }
+
 .container {
-  width: 800px;
-  margin: 30px auto;
-  grid: display; }
+  margin: 3rem;
+  display: grid;
+  justify-items: center; }
+
+.search-bar {
+  margin: 3rem; }
+  .search-bar p {
+    display: inline-block; }
+  .search-bar .search-bar__form {
+    display: inline-block;
+    border: 0.1rem solid black;
+    width: 30rem; }
