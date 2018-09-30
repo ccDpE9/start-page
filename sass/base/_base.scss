@@ -36,3 +36,11 @@ body {
   // font-family: "Lato", sans-serif;
   box-sizing: border-box;
 }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: " ";
+  clear: both;
+  height: 0;
+}

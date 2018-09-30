@@ -1,3 +1,5 @@
+// --- CLOCK --- //
+
 function time() {
     var today = new Date();
     var h = today.getHours();
@@ -12,8 +14,8 @@ function time() {
     setInterval(time, 500);
 }
 
-time();
 
+// --- SEARCH --- //
 
 var el = document.querySelector('.search-bar__form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -39,13 +41,25 @@ var el = document.querySelector('.search-bar__form').addEventListener('submit', 
 
 // --- WEATHER --- //
 
+function weatherHTML(path, weather, summary) {
 
-function weatherHTML(path, weather) {
     var parent = document.querySelector('.weather');
+    var day = document.createElement('div');
+    day.setAttribute('class', 'weather__day');
+    parent.appendChild(day);
+
     var img = document.createElement('IMG');
     img.setAttribute('src', path+weather+'.svg');
-    parent.appendChild(img);
+    img.setAttribute('class', 'weather__day--icon');
+    day.appendChild(img);
+
+    var daySummary = document.createElement('p');
+    daySummary.setAttribute('class', 'weather__day--summary');
+    daySummary.innerHTML = summary;
+    day.appendChild(daySummary);
+
 };
+
 
 function displayWeatherInfo(r) {
     console.log(r.daily.data[6].icon);
@@ -53,13 +67,12 @@ function displayWeatherInfo(r) {
     var path = 'vendors/weather-icons-master/svg/';
 
     for (var i=0; i <= 6; i++) {
-        console.log(r.daily.data[i].icon);
         switch (r.daily.data[i].icon) {
             case 'clear-day':
-                weatherHTML(path, r.daily.data[i].icon);
+                weatherHTML(path, r.daily.data[i].icon, r.daily.data[i].summary);
                 break;
             case 'partly-cloudy-day':
-                weatherHTML(path, r.daily.data[i].icon);
+                weatherHTML(path, r.daily.data[i].icon, r.daily.data[i].summary);
                 break;
             default:
                 console.log('Error: Weather not found - add to switch');
@@ -119,4 +132,10 @@ function getWeather() {
 };
 
 
-document.querySelector('.test').addEventListener('click', getWeather);
+function main() {
+    time();
+    getWeather();
+};
+
+
+main();
