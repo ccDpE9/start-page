@@ -41,12 +41,18 @@ var el = document.querySelector('.search-bar__form').addEventListener('submit', 
 
 // --- WEATHER --- //
 
-function weatherHTML(path, weather, summary) {
+
+function weatherHTML(path, weather, summary, tempHigh, tempLow) {
 
     var parent = document.querySelector('.weather');
     var day = document.createElement('div');
     day.setAttribute('class', 'weather__day');
     parent.appendChild(day);
+
+    var temp = document.createElement('p');
+    temp.setAttribute('class', 'weather__day--temp');
+    temp.innerHTML = tempHigh + '&deg;C' + ' | ' + tempLow + '&deg;C';
+    day.appendChild(temp);
 
     var img = document.createElement('IMG');
     img.setAttribute('src', path+weather+'.svg');
@@ -57,7 +63,6 @@ function weatherHTML(path, weather, summary) {
     daySummary.setAttribute('class', 'weather__day--summary');
     daySummary.innerHTML = summary;
     day.appendChild(daySummary);
-
 };
 
 
@@ -67,12 +72,16 @@ function displayWeatherInfo(r) {
     var path = 'vendors/weather-icons-master/svg/';
 
     for (var i=0; i <= 6; i++) {
+        var icon = r.daily.data[i].icon;
+        var summary = r.daily.data[i].summary;
+        var tempHigh = Math.round((r.daily.data[i].apparentTemperatureHigh - 32) * 5/9);
+        var tempLow = Math.round((r.daily.data[i].apparentTemperatureLow - 32) * 5/9);
         switch (r.daily.data[i].icon) {
             case 'clear-day':
-                weatherHTML(path, r.daily.data[i].icon, r.daily.data[i].summary);
+                weatherHTML(path, icon, summary, tempHigh, tempLow);
                 break;
             case 'partly-cloudy-day':
-                weatherHTML(path, r.daily.data[i].icon, r.daily.data[i].summary);
+                weatherHTML(path, icon, summary, tempHigh, tempLow);
                 break;
             default:
                 console.log('Error: Weather not found - add to switch');
