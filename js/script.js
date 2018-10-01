@@ -11,8 +11,7 @@ function time() {
         s = "0" + s;
     }
     document.querySelector('.time__current').textContent = h + ":" + m + ":" + s;
-    setInterval(time, 500);
-}
+    setInterval(time, 500000); }
 
 
 // --- SEARCH --- //
@@ -42,32 +41,23 @@ var el = document.querySelector('.search-bar__form').addEventListener('submit', 
 // --- WEATHER --- //
 
 
-function weatherHTML(path, weather, summary, tempHigh, tempLow) {
+function weatherHTML(path, weather, summary, tempHigh, tempLow, i) {
 
-    var parent = document.querySelector('.weather');
-    var day = document.createElement('div');
-    day.setAttribute('class', 'weather__day');
-    parent.appendChild(day);
+    var dayNum = i+1;
+    var el = document.querySelector('.js--weather__day0'+dayNum);
+    var elChildNodes = el.childNodes;
+    console.log(elChildNodes);
 
-    var temp = document.createElement('p');
-    temp.setAttribute('class', 'weather__day--temp');
-    temp.innerHTML = tempHigh + '&deg;C' + ' | ' + tempLow + '&deg;C';
-    day.appendChild(temp);
-
-    var img = document.createElement('IMG');
-    img.setAttribute('src', path+weather+'.svg');
-    img.setAttribute('class', 'weather__day--icon');
-    day.appendChild(img);
-
-    var daySummary = document.createElement('p');
-    daySummary.setAttribute('class', 'weather__day--summary');
-    daySummary.innerHTML = summary;
-    day.appendChild(daySummary);
-};
+    // icon
+    elChildNodes[1].setAttribute('src', path+weather+'.svg');
+    // temp
+    elChildNodes[3].innerHTML = tempHigh + '&deg;C' + ' | ' + tempLow + '&deg;C' + ' - ';
+    // summary
+    elChildNodes[5].innerHTML = summary;
+}
 
 
 function displayWeatherInfo(r) {
-    console.log(r.daily.data[6].icon);
     console.log(r);
     var path = 'vendors/weather-icons-master/svg/';
 
@@ -78,10 +68,13 @@ function displayWeatherInfo(r) {
         var tempLow = Math.round((r.daily.data[i].apparentTemperatureLow - 32) * 5/9);
         switch (r.daily.data[i].icon) {
             case 'clear-day':
-                weatherHTML(path, icon, summary, tempHigh, tempLow);
+                weatherHTML(path, icon, summary, tempHigh, tempLow, i);
                 break;
             case 'partly-cloudy-day':
-                weatherHTML(path, icon, summary, tempHigh, tempLow);
+                weatherHTML(path, icon, summary, tempHigh, tempLow, i);
+                break;
+            case 'partly-cloudy-night':
+                weatherHTML(path, icon, summary, tempHigh, tempLow, i);
                 break;
             default:
                 console.log('Error: Weather not found - add to switch');
@@ -148,3 +141,13 @@ function main() {
 
 
 main();
+
+
+var el = document.querySelector('.js--weather__day01');
+var week = document.querySelector('.weather__week');
+el.addEventListener('mouseover', function() {
+    week.style.display = 'block';
+});
+el.addEventListener('mouseout', function() {
+    week.style.display = 'none';
+});
