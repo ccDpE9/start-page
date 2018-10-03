@@ -46,7 +46,6 @@ function weatherHTML(path, weather, summary, tempHigh, tempLow, i) {
     var dayNum = i+1;
     var el = document.querySelector('.js--weather__day0'+dayNum);
     var elChildNodes = el.childNodes;
-    console.log(elChildNodes);
 
     // icon
     elChildNodes[1].setAttribute('src', path+weather+'.svg');
@@ -74,6 +73,9 @@ function displayWeatherInfo(r) {
                 weatherHTML(path, icon, summary, tempHigh, tempLow, i);
                 break;
             case 'partly-cloudy-night':
+                weatherHTML(path, icon, summary, tempHigh, tempLow, i);
+                break;
+            case 'fog':
                 weatherHTML(path, icon, summary, tempHigh, tempLow, i);
                 break;
             default:
@@ -146,8 +148,9 @@ main();
 var el = document.querySelector('.js--weather__day01');
 var week = document.querySelector('.weather__week');
 el.addEventListener('mouseover', function() {
-    week.style.display = 'block';
+    // week.style.display = 'block';
+    week.classList.add('weather__week--transitioned');
 });
 el.addEventListener('mouseout', function() {
-    week.style.display = 'none';
+    week.classList.remove('weather__week--transitioned');
 });

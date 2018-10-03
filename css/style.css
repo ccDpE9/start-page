@@ -54,8 +54,13 @@ img {
   top: 0;
   left: 0; }
   .weather__week {
-    visibility: hidden;
-    opacity: 0; }
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    opacity: 0 !important;
+    visibility: hidden !important; }
   .weather__week--transitioned {
     -webkit-transition: 1s;
     -moz-transition: 1s;
