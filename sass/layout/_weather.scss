@@ -4,6 +4,22 @@
   top: 0;
   left: 0;
 
+  &__week {
+    // display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &__week--transitioned {
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
   &__day {
     display: flex;
     flex-direction: row;
@@ -13,13 +29,9 @@
       float: left;
     }
 
-    &--summary {
+    &--temp {
     }
 
-  }
-
-  &__week {
-    display: none;
   }
 
 };
