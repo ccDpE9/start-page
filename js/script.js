@@ -17,23 +17,10 @@ function time() {
 // --- SEARCH --- //
 
 var el = document.querySelector('.search-bar__form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var url = 'https://duckduckgo.com/html/?q=test+test';
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://www.duckduckgo.com');
-    xhr.onload = function(e) {
-        if (xhr.readyState === 4) {
-            console.log(xhr.responseText);
-        } else {
-            console.log(xhr.statusText);
-        }
-    }
-    xhr.onerror = function(e) {
-        console.log(xhr.statusText);
-    }
-    xhr.send(null);
+    var searchStr = document.querySelector('.search-bar__form--input').value;
+    var result = searchStr.replace(' ', '+'); 
+    var link = 'https://duckduckgo.com/?q=' + result + '&t=h_&atb=v1-1&ia=web'
+    window.open(link);
 });
 
 
@@ -144,6 +131,8 @@ function main() {
 
 main();
 
+
+// --- EVENTS --- //
 
 var el = document.querySelector('.js--weather__day01');
 var week = document.querySelector('.weather__week');
