@@ -34,18 +34,10 @@ img {
   height: auto;
   fill: #aff2445; }
 
-.search-bar__form--input {
-  border: none;
-  border-bottom: 1px solid #af2445; }
-
-.container {
-  margin: 3rem;
-  display: grid;
-  justify-items: center;
-  align-items: center; }
-
 .search-bar {
-  margin: 3rem; }
+  margin: 3rem;
+  justify-self: center;
+  align-self: center; }
   .search-bar p {
     display: inline-block; }
   .search-bar__form {
@@ -54,10 +46,13 @@ img {
       border: none;
       border-bottom: 1px solid #af2445; }
 
+.container {
+  margin: 3rem;
+  display: grid; }
+
 .weather {
   position: absolute;
-  top: 0;
-  left: 0; }
+  justify-self: start; }
   .weather__week {
     -webkit-transition: 1s;
     -moz-transition: 1s;
@@ -80,3 +75,17 @@ img {
     align-items: center; }
     .weather__day--icon {
       float: left; }
+
+.todo {
+  position: absolute;
+  justify-self: end; }
+  .todo ul {
+    list-style: none; }
+  .todo .tasks__element {
+    padding: 1rem;
+    border-bottom: 0.1rem solid #af2445;
+    transition: all .5s ease-out; }
+    .todo .tasks__element:first-child {
+      border-top: 0.1rem solid #af2445; }
+    .todo .tasks__element a {
+      float: right; }

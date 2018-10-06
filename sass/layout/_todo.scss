@@ -1,0 +1,28 @@
+.todo {
+  position: absolute;
+  justify-self: end;
+
+  ul {
+    list-style: none;
+  }
+
+  .tasks {
+
+    &__element {
+      padding: 1rem;
+      border-bottom: 0.1rem solid #af2445;
+      transition: all .5s ease-out;
+
+      &:first-child {
+	border-top: 0.1rem solid #af2445;
+      }
+
+      a {
+	float: right;
+      }
+
+    }
+
+  }
+
+}

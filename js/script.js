@@ -123,6 +123,96 @@ function getWeather() {
 };
 
 
+// --- TODO --- //
+
+document.querySelector('.todo__form').addEventListener('submit', newTask);
+document.addEventListener('DOMContentLoaded', localStorageOnLoad);
+
+
+function newTask(e) {
+    e.preventDefault();
+    const task = document.querySelector('.todo__form--input').value; 
+    
+    const removeBtn = document.createElement('a');
+    removeBtn.classList = 'tasks__element--remove';
+    removeBtn.setAttribute('href', '#');
+    removeBtn.textContent = 'X';
+    removeBtn.addEventListener('click', removeTask);
+
+    const taskList = document.querySelector('.tasks');
+    const taskElement = document.createElement('li');
+    taskElement.setAttribute('class', 'tasks__element');
+    taskElement.textContent = task;
+    taskElement.appendChild(removeBtn);
+    taskList.appendChild(taskElement);
+
+    addTaskToLocalStorage(task);
+};
+
+
+function removeTask(e) {
+    var elem = e.target.parentElement;
+    elem.style.transform = 'translateX(-100px)';
+    setTimeout(function() {
+        elem.remove();
+    }, 500);
+    removeTaskLocalStorage(e.target.parentElement.textContent);
+};
+
+
+function addTaskToLocalStorage(task) {
+    let tasks = getTasksFromLocalStorage();
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+
+function getTasksFromLocalStorage() {
+    let taskse;
+    const tasksLS = localStorage.getItem('tasks');
+    if (tasksLS === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(tasksLS);
+    }
+    return tasks;
+};
+
+
+function localStorageOnLoad() {
+    let tasks = getTasksFromLocalStorage();
+    tasks.forEach(function(task) {
+        const removeBtn = document.createElement('a');
+        removeBtn.classList = 'tasks__element--remove';
+        removeBtn.setAttribute('href', '#');
+        removeBtn.textContent = 'X';
+        removeBtn.addEventListener('click', removeTask);
+
+        const taskList = document.querySelector('.tasks');
+        const taskElement = document.createElement('li');
+        taskElement.setAttribute('class', 'tasks__element');
+        taskElement.textContent = task;
+        taskElement.appendChild(removeBtn);
+        taskList.appendChild(taskElement);
+    });
+};
+
+
+function removeTaskLocalStorage(task) {
+    let tasks = getTasksFromLocalStorage();
+    const taskDelete = task.substring(0, task.length - 1);
+    tasks.forEach(function(task,index) {
+        if (taskDelete === task) {
+            tasks.splice(index, 1);
+        }
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+
+
+// --- MAIN --- //
+
 function main() {
     time();
     getWeather();
