@@ -5,10 +5,14 @@
     display: inline-block;
   }
 
-  .search-bar__form {
+  &__form {
     display: inline-block;
-    border: 0.1rem solid black;
-    width: 30rem;
+
+    &--input {
+      border: none;
+      border-bottom: 1px solid #af2445;
+    }
+
   }
 
 }

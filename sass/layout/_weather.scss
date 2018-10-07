@@ -1,8 +1,8 @@
 .weather {
-  // justify-self: start;
   position: absolute;
-  top: 0;
-  left: 0;
+  //top: 0;
+  //left: 0;
+  justify-self: start;
 
   &__week {
     -webkit-transition: 1s;
