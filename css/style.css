@@ -84,8 +84,49 @@ img {
   .todo .tasks__element {
     padding: 1rem;
     border-bottom: 0.1rem solid #af2445;
-    transition: all .5s ease-out; }
+    transition: all .5s ease-out;
+    -webkit-animation: bounce 1.2s ease-out;
+    -moz-animation: bounce 800ms ease-out;
+    -o-animation: bounce 800ms ease-out;
+    animation: bounce 1.2s ease-out; }
     .todo .tasks__element:first-child {
       border-top: 0.1rem solid #af2445; }
     .todo .tasks__element a {
       float: right; }
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0; }
+  5% {
+    transform: translateY(-100%);
+    opacity: 0; }
+  15% {
+    transform: translateY(0);
+    padding-bottom: 5px; }
+  30% {
+    transform: translateY(-50%); }
+  40% {
+    transform: translateY(0%);
+    padding-bottom: 6px; }
+  50% {
+    transform: translateY(-30%); }
+  70% {
+    transform: translateY(0%);
+    padding-bottom: 7px; }
+  80% {
+    transform: translateY(-15%); }
+  90% {
+    transform: translateY(0%);
+    padding-bottom: 8px; }
+  95% {
+    transform: translateY(-7%); }
+  97% {
+    transform: translateY(0%);
+    padding-bottom: 9px; }
+  99% {
+    transform: translateY(-3%); }
+  100% {
+    transform: translateY(0);
+    padding-bottom: 9px;
+    opacity: 1; } }
